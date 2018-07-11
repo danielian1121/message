@@ -8,35 +8,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 15px;
+        html,
+        body {
+            margin: 5px;
+            padding: 0;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 
 <body>
 
-    <div>
-        <table id="test">
+    <div id="test" style="background-color: blue;height:100%;">
 
-        </table>
     </div>
     <script>
         $.getJSON("test.json", function (data) {
             $.each(data, function (key, val) {
                 if (key == "article") {
                     var number = val.length;
+                    alert(number);
                     for (var i = 0; i < number; i++) {
-                        $("#test").append("<tr><td>" + data.article[i].title + "</td></tr>" + "<br>");
-                        $("#test").append("<tr><td>" + data.article[i].content + "</td></tr>" + "<br>");
+                        $("#test").append("<div style=\"background-color: red;text-align: center;\">" +
+                            data.article[i].title +
+                            "</div>");
+                        $("#test").append(
+                            "<div style=\"background-color: green;height:100px;text-align: center;\">" +
+                            data
+                            .article[i].content +
+                            "</div>");
                     }
                 }
             });
