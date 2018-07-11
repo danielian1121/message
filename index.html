@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <table id="test">
+
+        </table>
+    </div>
+    <script>
+        $.getJSON("test.json", function (data) {
+            $.each(data, function (key, val) {
+                if (key == "article") {
+                    var number = val.length;
+                    for (var i = 0; i < number; i++) {
+                        $("#test").append("<tr><td>" + data.article[i].title + "</td></tr>" + "<br>");
+                        $("#test").append("<tr><td>" + data.article[i].content + "</td></tr>" + "<br>");
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
