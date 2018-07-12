@@ -8,36 +8,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
-        html,
-        body {
-            margin: 5px;
-            padding: 0;
-            height: 100%;
-            border: none;
+        .top {
+            padding: .3rem;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        .title {
+            background-color: dimgrey;
+            text-align: center;
+            margin: 1px;
+        }
+
+        #test {
+            padding: .3rem 3rem;
+        }
+
+        .content {
+            background-color: darkseagreen;
+            padding: 1.3rem 7cm;
+            word-break: break-all;
+            font-size: 20px;
+        }
+
+        .title2 {
+            padding-top: 0.8rem;
+            font-size: 30px;
         }
     </style>
 </head>
 
 <body>
+    <header class="top">
+        <h1>文章列表</h1>
+    </header>
 
-    <div id="test" style="background-color: blue;height:100%;">
+    <article id="test" style="background-color:#aaa;">
 
-    </div>
+    </article>
     <script>
-        $.getJSON("test.json", function (data) {
+        $.getJSON("myArticle.json", function (data) {
             $.each(data, function (key, val) {
                 if (key == "article") {
                     var number = val.length;
-                    alert(number);
                     for (var i = 0; i < number; i++) {
-                        $("#test").append("<div style=\"background-color: red;text-align: center;\">" +
+                        $("#test").append("<article class=\"title\"><h1 class=\"title2\">" +
                             data.article[i].title +
-                            "</div>");
-                        $("#test").append(
-                            "<div style=\"background-color: green;height:100px;text-align: center;\">" +
+                            "</h1>" + "<p class=\"content\">" +
                             data
                             .article[i].content +
-                            "</div>");
+                            "</p></article>");
                     }
                 }
             });
