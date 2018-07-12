@@ -47,7 +47,7 @@
 
     </article>
     <script>
-        $.getJSON("myArticle.json", function (data) {
+        /*$.getJSON("myArticle.json", function (data) {
             $.each(data, function (key, val) {
                 if (key == "article") {
                     var number = val.length;
@@ -56,11 +56,25 @@
                             data.article[i].title +
                             "</h1>" + "<p class=\"content\">" +
                             data
-                            .article[i].content +
+                                .article[i].content +
                             "</p></article>");
                     }
                 }
             });
+        });*/
+        $.ajax({
+            type: "GET",
+            url: "getContent.php",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    $("#test").append("<article class=\"title\"><h1 class=\"title2\">" +
+                        value[1] +
+                        "</h1>" + "<p class=\"content\">" +
+                        value[2] +
+                        "</p></article>");
+                });
+            }
         });
     </script>
 
