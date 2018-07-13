@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="create.php" id="test" method="post">
+        username:
+        <input type="text" name="username" required></input>
+        <br>
+        <br> title:
+        <input type="text" name="title" required></input>
+        <br>
+        <br>
+        <textarea name="content" cols="40" rows="5" form="test" required></textarea>
+        <br>
+        <br>
+        <input type="submit" name="submit" value="update"></input>
+    </form>
+</body>
+
+</html>

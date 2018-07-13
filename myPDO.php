@@ -89,14 +89,19 @@ class myPDO extends PDO
         $bind_data = [];
         //為bind做準備
         foreach ($data as $key => $value) {
-            $values[] = ":{$key}";//sql上的語法
-            $bind_data[":{$key}"] = $value;//sql上的語法對應其value
+            //time是吃function,不用bind value
+            if ($key=="time") {
+                $values[] = "$value";
+            } else {
+                $values[] = ":{$key}";//sql上的語法
+                $bind_data[":{$key}"] = $value;//sql上的語法對應其value
+            }
         }
         $sql = "INSERT INTO {$table} (".implode(',', $colume).") VALUE (".implode(',', $values).")";
         $this->_stmt = $this->prepare($sql);
         $this->_bind($bind_data);
         $this->_stmt->execute();
-        $this->lastInsertId();//回傳insert後的id
+        //$this->lastInsertId();//回傳insert後的id
     }
 
     public function get_last_id()
